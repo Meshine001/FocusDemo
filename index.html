@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	</head>
+
+	<body>
+		<button id="btn1">Ajax打开新窗口</button>
+		<button id="btn2">Ajax打开新窗口并滑动到checkbox的位置</button>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				var url = 'ajax/simulation.json';
+
+				//打开不能自动滑动的页面
+				$('#btn1').click(function() {
+
+					$.ajax({
+						type: "get",
+						dataType: 'json',
+						url: url,
+						async: false, //只要设为同步请求即可
+						success: function(data) {
+							if(data.statusCode == 200) {
+								window.open('Focus.html');
+							}
+						}
+
+					});
+
+				});
+
+				//打开能自动滑动的页面
+				$('#btn2').click(function() {
+
+					$.ajax({
+						type: "get",
+						dataType: 'json',
+						url: url,
+						async: false, //只要设为同步请求即可
+						success: function(data) {
+							if(data.statusCode == 200) {
+								window.open('FocusScroll.html');
+							}
+						}
+
+					});
+
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

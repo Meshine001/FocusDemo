@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	</head>
+	<body>
+		<h1>将自动滑动到你想要的checkbox</h1>
+		<table align="center" style="margin-top: 50%;margin-bottom: 20%;">
+			<tr>
+				<td>
+					<input type="checkbox"/>
+				</td>
+				<td>没被选中</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox"/>
+				</td>
+				<td>没被选中</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox"/>
+				</td>
+				<td>没被选中</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" checked="checked"/>
+				</td>
+				<td>被选中的</td>
+			</tr>
+		</table>
+		
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				var target;//要滑动到的元素
+				
+				//遍历tr找到被选中的checkbox
+				$('table tr input').each(function(){
+					if($(this).attr('checked') == 'checked'){
+						target = this;
+					}
+				});
+				
+				//移动到被选中的checkbox
+				$('html, body').animate({  
+                    scrollTop: $(target).offset().top  
+                }, 1000);  
+				
+			});
+			
+		</script>
+	</body>
+</html>
